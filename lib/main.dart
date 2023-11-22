@@ -16,11 +16,13 @@ class MyApp extends StatelessWidget {
       title: 'Material App',
       theme: ThemeData(
         useMaterial3: true,
+        primaryColor: Colors.green,
+        primarySwatch: Colors.green,
         appBarTheme: const AppBarTheme(
-          backgroundColor: Colors.deepPurple,
+          backgroundColor: Colors.green,
         ),
         colorScheme: ColorScheme.fromSeed(
-          seedColor: Colors.purple,
+          seedColor: Colors.lightGreen,
           brightness: Brightness.light,
         ),
         textTheme: TextTheme(
