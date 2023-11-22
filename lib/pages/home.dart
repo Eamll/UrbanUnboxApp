@@ -1,9 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:appinio_swiper/appinio_swiper.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:notjusthack_app/components/appbar.dart';
-import 'package:notjusthack_app/components/product_card.dart';
-import 'package:notjusthack_app/models/product.dart';
 import 'package:notjusthack_app/pages/businesses.dart';
 import 'package:notjusthack_app/pages/create_post.dart';
 import 'package:notjusthack_app/pages/messages.dart';
@@ -27,7 +23,11 @@ class _HomePageState extends State<Home> {
     Businesses(),
     CreatePost(),
     Messages(),
-    Profile()
+    Profile(
+      profileImagePath: 'assets/images/logo.png',
+      username: 'User12312312',
+      businessName: 'MakeBoxesCompany',
+    )
   ];
 
   void _onItemTapped(int index) {

@@ -12,15 +12,15 @@ class Messages extends StatefulWidget {
 class _MessagesState extends State<Messages> {
   List<Chat> chats = [
     Chat(
-      senderName: "John Doe",
-      senderAvatar: "https://example.com/avatar1.jpg",
+      senderName: "John Doe - Clothing",
+      senderAvatar: "person1.png",
       lastMessage: "Hey, how are you?",
       timestamp: "10:30 AM",
     ),
     Chat(
-      senderName: "Jane Smith",
-      senderAvatar: "https://example.com/avatar2.jpg",
-      lastMessage: "Did you finish the project?",
+      senderName: "Jane Smith - Clothing",
+      senderAvatar: "person2.png",
+      lastMessage: "Do you want to see our catalog?",
       timestamp: "Yesterday",
     ),
     // Add more chats here...
@@ -34,7 +34,8 @@ class _MessagesState extends State<Messages> {
         final chat = chats[index];
         return ListTile(
           leading: CircleAvatar(
-            backgroundImage: NetworkImage(chat.senderAvatar),
+            backgroundImage: AssetImage('assets/images/${chat.senderAvatar}'),
+            // child: Icon(Icons.person),
           ),
           title: Text(
             chat.senderName,

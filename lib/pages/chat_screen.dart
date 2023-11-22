@@ -5,26 +5,32 @@ import 'package:notjusthack_app/models/message.dart';
 class ChatScreen extends StatefulWidget {
   final Chat chat;
 
-  const ChatScreen({required this.chat});
+  const ChatScreen({Key? key, required this.chat}) : super(key: key);
 
   @override
   _ChatScreenState createState() => _ChatScreenState();
 }
 
 class _ChatScreenState extends State<ChatScreen> {
-  List<Message> messages = [
-    Message(
-      sender: "John Doe",
-      text: "Hey, how are you?",
-      timestamp: "10:30 AM",
-    ),
-    Message(
-      sender: "You",
-      text: "I'm good, thanks!",
-      timestamp: "10:32 AM",
-    ),
-    // Add more messages here...
-  ];
+  List<Message> messages = [];
+
+  @override
+  void initState() {
+    super.initState();
+    messages = [
+      Message(
+        sender: widget.chat.senderName,
+        text: widget.chat.lastMessage,
+        timestamp: widget.chat.timestamp,
+      ),
+      Message(
+        sender: "You",
+        text: "I'm good, thanks!",
+        timestamp: "10:32 AM",
+      ),
+      // Add more messages here...
+    ];
+  }
 
   @override
   Widget build(BuildContext context) {

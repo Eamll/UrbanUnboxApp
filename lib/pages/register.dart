@@ -1,10 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_signin_button/button_list.dart';
-import 'package:flutter_signin_button/button_view.dart';
 import 'package:notjusthack_app/components/appbar.dart';
 
-class Login extends StatelessWidget {
-  const Login({Key? key}) : super(key: key);
+class Register extends StatelessWidget {
+  const Register({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -15,6 +13,12 @@ class Login extends StatelessWidget {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
+            TextField(
+              decoration: const InputDecoration(
+                labelText: 'Name',
+              ),
+            ),
+            const SizedBox(height: 16),
             TextField(
               decoration: const InputDecoration(
                 labelText: 'Email',
@@ -30,28 +34,17 @@ class Login extends StatelessWidget {
             const SizedBox(height: 16),
             ElevatedButton(
               onPressed: () {
-                Navigator.pushReplacementNamed(context, '/home');
+                // Perform registration logic here
               },
-              child: const Text('Login'),
+              child: const Text('Register'),
             ),
             const SizedBox(height: 16),
             TextButton(
               onPressed: () {
-                Navigator.pushReplacementNamed(context, '/register');
+                Navigator.pushReplacementNamed(context, '/login');
               },
-              child: const Text("Don't have an account? Register here."),
+              child: const Text('Already have an account? Login here.'),
             ),
-            Divider(),
-            SignInButton(
-              Buttons.Google,
-              onPressed: () {},
-            ),
-            const SizedBox(height: 16),
-            SignInButton(
-              Buttons.Facebook,
-              onPressed: () {},
-            ),
-            const SizedBox(height: 16),
           ],
         ),
       ),
