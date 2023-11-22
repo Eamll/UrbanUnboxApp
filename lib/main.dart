@@ -1,7 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:notjusthack_app/pages/businesses.dart';
+import 'package:notjusthack_app/pages/create_post.dart';
 import 'package:notjusthack_app/pages/home.dart';
 import 'package:notjusthack_app/pages/login.dart';
+import 'package:notjusthack_app/pages/messages.dart';
+import 'package:notjusthack_app/pages/profile.dart';
 
 void main() => runApp(const MyApp());
 
@@ -46,6 +50,10 @@ class MyApp extends StatelessWidget {
       routes: <String, WidgetBuilder>{
         '/login': (BuildContext context) => Login(),
         '/home': (BuildContext context) => Home(),
+        '/profile': (BuildContext context) => Profile(),
+        '/messages': (BuildContext context) => Messages(),
+        '/businesses': (BuildContext context) => Businesses(),
+        '/create-post': (BuildContext context) => CreatePost(),
       },
     );
   }
