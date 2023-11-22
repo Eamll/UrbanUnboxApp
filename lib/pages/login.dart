@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:notjusthack_app/components/appbar.dart';
 
 class Login extends StatelessWidget {
   const Login({Key? key}) : super(key: key);
@@ -6,9 +7,7 @@ class Login extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: const Text("Login"),
-      ),
+      appBar: AppBar(title: const CustomAppBar()),
       body: Padding(
         padding: const EdgeInsets.all(16.0),
         child: Column(

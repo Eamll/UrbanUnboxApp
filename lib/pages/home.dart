@@ -1,13 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:appinio_swiper/appinio_swiper.dart';
 import 'package:flutter/cupertino.dart';
+import 'package:notjusthack_app/components/appbar.dart';
 import 'package:notjusthack_app/components/product_card.dart';
 import 'package:notjusthack_app/models/product.dart';
 
 class Home extends StatefulWidget {
   const Home({
-    Key? key,
-  }) : super(key: key);
+    super.key,
+  });
 
   @override
   State<Home> createState() => _HomePageState();
@@ -61,6 +62,9 @@ class _HomePageState extends State<Home> {
     Text(
       'Index 2: School',
     ),
+    Text(
+      'Index 3: School',
+    ),
   ];
 
   void _onItemTapped(int index) {
@@ -72,21 +76,9 @@ class _HomePageState extends State<Home> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: Row(
-          mainAxisAlignment: MainAxisAlignment.start,
-          children: [
-            Image.asset(
-              'assets/images/logo.png',
-              fit: BoxFit.contain,
-              height: 32,
-            ),
-            Container(
-                padding: const EdgeInsets.all(8.0), child: Text('UrbanUnbox'))
-          ],
-        ),
-      ),
+      appBar: AppBar(title: const CustomAppBar()),
       bottomNavigationBar: BottomNavigationBar(
+        type: BottomNavigationBarType.fixed,
         items: const <BottomNavigationBarItem>[
           BottomNavigationBarItem(
             icon: Icon(Icons.home),
@@ -95,6 +87,14 @@ class _HomePageState extends State<Home> {
           BottomNavigationBarItem(
             icon: Icon(Icons.business),
             label: 'Businesses',
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.add_box_outlined),
+            label: 'New',
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.message),
+            label: 'Messages',
           ),
           BottomNavigationBarItem(
             icon: Icon(Icons.person),
@@ -178,7 +178,7 @@ Widget swipeLeftButton(
       onPressed: () {
         controller.swipeLeft();
       },
-      icon: Icon(Icons.arrow_back),
+      icon: Icon(Icons.close),
       color: Colors.white,
     ),
   );
@@ -195,7 +195,7 @@ Widget swipeRightButton(
       onPressed: () {
         controller.swipeRight();
       },
-      icon: Icon(Icons.arrow_forward),
+      icon: Icon(Icons.check),
       color: Colors.white,
     ),
   );
