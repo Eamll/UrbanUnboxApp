@@ -17,6 +17,7 @@ class Home extends StatefulWidget {
 
 class _HomePageState extends State<Home> {
   int _selectedIndex = 0;
+  bool _isSearching = false;
 
   static const List<Widget> _widgetOptions = <Widget>[
     ProductSwiper(),
@@ -36,10 +37,24 @@ class _HomePageState extends State<Home> {
     });
   }
 
+  void _toggleSearch() {
+    setState(() {
+      _isSearching = !_isSearching;
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: const CustomAppBar()),
+      appBar: AppBar(
+        title: _isSearching ? _buildSearchField() : const CustomAppBar(),
+        actions: [
+          IconButton(
+            icon: const Icon(Icons.search),
+            onPressed: _toggleSearch,
+          ),
+        ],
+      ),
       bottomNavigationBar: BottomNavigationBar(
         type: BottomNavigationBarType.fixed,
         items: const <BottomNavigationBarItem>[
@@ -69,6 +84,21 @@ class _HomePageState extends State<Home> {
         onTap: _onItemTapped,
       ),
       body: _widgetOptions[_selectedIndex],
+    );
+  }
+
+  Widget _buildSearchField() {
+    return Container(
+      color: Colors.white, // Set the background color of the container
+      child: TextField(
+        decoration: InputDecoration(
+          hintText: 'Search...',
+          border: InputBorder.none,
+        ),
+        onChanged: (value) {
+          // Handle search query changes
+        },
+      ),
     );
   }
 }

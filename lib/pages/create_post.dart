@@ -1,6 +1,7 @@
 import 'dart:io';
 
 import 'package:flutter/material.dart';
+import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:image_picker/image_picker.dart';
 
 class CreatePost extends StatefulWidget {
@@ -15,6 +16,7 @@ class _CreatePostScreenState extends State<CreatePost> {
   TextEditingController _priceController = TextEditingController();
   List<String> _attributes = [];
   String? _selectedImagePath;
+  LatLng? _selectedLocation;
 
   @override
   void dispose() {
@@ -110,6 +112,22 @@ class _CreatePostScreenState extends State<CreatePost> {
             ElevatedButton(
               onPressed: _addAttribute,
               child: Text('Add Attribute'),
+            ),
+            SizedBox(height: 16),
+            Container(
+              width: 200,
+              height: 200,
+              child: GoogleMap(
+                initialCameraPosition: CameraPosition(
+                  target: LatLng(0, 0), // Set the initial map position
+                  zoom: 15, // Set the initial zoom level
+                ),
+                onTap: (LatLng location) {
+                  setState(() {
+                    _selectedLocation = location;
+                  });
+                },
+              ),
             ),
             SizedBox(height: 16),
             ElevatedButton(
